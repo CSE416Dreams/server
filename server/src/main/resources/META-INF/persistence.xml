@@ -1,0 +1,58 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+  <persistence-unit name="district_unit" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistenceProvider</provider>
+    <class>District</class>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.connection.username" value="joshmathew"/>
+      <property name="hibernate.connection.password" value="112627773"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://mysql3.cs.stonybrook.edu:3306/dreams"/>
+      <property name="hibernate.max_fetch_depth" value="3"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="district_plan_unit" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>DistrictPlan</class>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.connection.username" value="joshmathew"/>
+      <property name="hibernate.connection.password" value="112627773"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://mysql3.cs.stonybrook.edu:3306/dreams"/>
+      <property name="hibernate.max_fetch_depth" value="3"/>
+    </properties>
+  </persistence-unit>
+    <persistence-unit name="state_unit" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>dream_team.server.model.State</class>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.connection.username" value="joshmathew"/>
+      <property name="hibernate.connection.password" value="112627773"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://mysql3.cs.stonybrook.edu:3306/dreams"/>
+      <property name="hibernate.max_fetch_depth" value="3"/>
+    </properties>
+  </persistence-unit>
+    <persistence-unit name="seawulf_unit" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>dream_team.server.seawulf.SeaWulf</class>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.connection.username" value="joshmathew"/>
+      <property name="hibernate.connection.password" value="112627773"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://mysql3.cs.stonybrook.edu:3306/dreams"/>
+      <property name="hibernate.max_fetch_depth" value="3"/>
+    </properties>
+  </persistence-unit>
+</persistence>
