@@ -129,12 +129,10 @@ public class District {
 	}
 
 	public boolean isMMD() {
+		this.isMMD = isMajorityMinorityDistrict();
 		return isMMD;
 	}
 
-	public void setMMD(boolean isMMD) {
-		this.isMMD = isMMD;
-	}
 
 	public double getPolsbyPopperValue() {
 		this.polsbyPopperValue = calculatePolsbyPopperValue();
@@ -179,5 +177,12 @@ public class District {
         }
         return false;
     }
+	 public Boolean isMajorityMinorityDistrict() {
+	        int minorities = demographics.getTotalPopulation()- demographics.getWhitePopulation();
+	        if(minorities > demographics.getWhitePopulation()) {
+	            return true;
+	        }
+	        return false;
+	    }
 	
 }

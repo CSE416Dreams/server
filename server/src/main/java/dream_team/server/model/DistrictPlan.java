@@ -131,20 +131,13 @@ public class DistrictPlan {
 	public Integer calculateTotalMajorityMinorityDistricts() {
 			int numOfMMDs = 0;
 	        for(District temp : districts) {
-	            if(isMajorityMinorityDistrict(temp.getPopulation(), 
-	            		temp.getDemographics().getWhitePopulation()) == true) {
+	            if(temp.isMMD() == true) {
 	            	numOfMMDs++;
 	            }
 	        }
 	        return numOfMMDs;
 	    }
-	 public Boolean isMajorityMinorityDistrict(int totalPopulation, int white) {
-	        int minorities = totalPopulation - white;
-	        if(minorities > white) {
-	            return true;
-	        }
-	        return false;
-	    }
+
 	 public Double calculateEqualPopulationMeasure() {
 		 	double totalSum = 0;
 	        for(District temp : districts) {
