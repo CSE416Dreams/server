@@ -27,8 +27,7 @@ public class DistrictPlan {
 	@Id
 	@Column(name = "PlanName")
 	private String planName;
-	@ManyToOne(targetEntity = State.class,fetch = FetchType.LAZY, 
-			cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = State.class,fetch = FetchType.LAZY)
 	@JoinColumn(name = "StateID")
 	private State state;
 	@Column(name = "Status")
@@ -42,8 +41,7 @@ public class DistrictPlan {
 	@Column(name = "SplitID")
 	private String splitID;
 
-	@OneToMany(mappedBy = "planName", 
- 		   cascade = CascadeType.PERSIST) 
+	@OneToMany(mappedBy = "planName") 
     private List<District> districts;
 
 
@@ -158,36 +156,34 @@ public class DistrictPlan {
 		 return sum/districts.size();
 	 }
 	 public Double calculateEfficiencyGap() {
-//	        int wasted = 0;
-//	        int total = 0;
-//	        for (District temp : districts) {
-//	            wasted += (temp.getVoteRep() - temp.getVoteDem());
-//	            total += temp.getVoteRep();
-//	            total += temp.getVoteDem();
-//	        }
-//	        double efficiencygap = (double)wasted / (double)total;
-//	        return efficiencygap;
-		 return 1.2;
+	        int wasted = 0;
+	        int total = 0;
+	        for (District temp : districts) {
+	            wasted += (temp.getVoteRep() - temp.getVoteDem());
+	            total += temp.getVoteRep();
+	            total += temp.getVoteDem();
+	        }
+	        double efficiencygap = (double)wasted / (double)total;
+	        return Math.abs(efficiencygap);
 	    }
 	 public Double calculateMeanMedianDifference() {
-//	        double[] votes = new double[districts.size()];
-//	        for(int x = 0; x < districts.size(); x++) {
-//	            double temp = (double)(districts.get(x).getVoteRep() - districts.get(x).getVoteDem())
-//	            		/(districts.get(x).getVoteRep() + districts.get(x).getVoteDem());
-//	            votes[x] = temp;
-//	        }
-//	        Arrays.sort(votes);
-//	        double median = 0;
-//	        if(votes.length % 2 != 0)
-//	            median = (double) votes[votes.length/2];
-//	        else
-//	            median = (double) (votes[(votes.length - 1)/2] + votes[votes.length / 2] / 2.0);
-//	        double mean = 0;
-//	        for(int x = 0; x < votes.length; x++) {
-//	            mean += votes[x];
-//	        }
-//	        mean = mean / votes.length;
-//	        return mean - median;
-		 return 1.3;
+	        double[] votes = new double[districts.size()];
+	        for(int x = 0; x < districts.size(); x++) {
+	            double temp = (double)(districts.get(x).getVoteRep() - districts.get(x).getVoteDem())
+	            		/(districts.get(x).getVoteRep() + districts.get(x).getVoteDem());
+	            votes[x] = temp;
+	        }
+	        Arrays.sort(votes);
+	        double median = 0;
+	        if(votes.length % 2 != 0)
+	            median = (double) votes[votes.length/2];
+	        else
+	            median = (double) (votes[(votes.length - 1)/2] + votes[votes.length / 2] / 2.0);
+	        double mean = 0;
+	        for(int x = 0; x < votes.length; x++) {
+	            mean += votes[x];
+	        }
+	        mean = mean / votes.length;
+	        return Math.abs(mean - median);
 	    }
 }
