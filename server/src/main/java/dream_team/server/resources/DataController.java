@@ -7,12 +7,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import dream_team.server.model.DistrictPlan;
-import dream_team.server.oldservice.CompactnessMeasureService;
-import dream_team.server.oldservice.DemographicsMeasureService;
-import dream_team.server.oldservice.DistrictPlanSummaryService;
-import dream_team.server.oldservice.GeographicsMeasureService;
-import dream_team.server.oldservice.PopulationMeasureService;
-import dream_team.server.oldservice.VotingMeasureService;
+//import dream_team.server.oldservice.CompactnessMeasureService;
+//import dream_team.server.oldservice.DemographicsMeasureService;
+//import dream_team.server.oldservice.DistrictPlanSummaryService;
+//import dream_team.server.oldservice.GeographicsMeasureService;
+//import dream_team.server.oldservice.PopulationMeasureService;
+//import dream_team.server.oldservice.VotingMeasureService;
 import dream_team.server.seawulf.BoxAndWhisker;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -30,20 +30,20 @@ import jakarta.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 
 public class DataController {
-//
-//	@GET
-//	@Path("/{boxAndWhisker}")
-//	public Response getPlan(@PathParam("boxAndWhisker") String boxAndWhisker) {
-//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("seawulf_unit");
-//		EntityManager em = emf.createEntityManager();
-//		//BoxAndWhisker bw = (BoxAndWhisker)em.find(BoxAndWhisker.class, boxAndWhisker);
-//
-//		return Response.status(200).header("Access-Control-Allow-Origin", "*")
-//				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-//				.header("Access-Control-Allow-Credentials", "true")
-//				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-//				.header("Access-Control-Max-Age", "1209600").entity(bw).build();
-//
-//	}
+
+	@GET
+	@Path("/{boxAndWhisker}")
+	public Response getPlan(@PathParam("boxAndWhisker") String boxAndWhisker) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("seawulf_unit");
+		EntityManager em = emf.createEntityManager();
+		BoxAndWhisker bw = (BoxAndWhisker)em.find(BoxAndWhisker.class, boxAndWhisker);
+
+		return Response.status(200).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+				.header("Access-Control-Max-Age", "1209600").entity(bw).build();
+
+	}
 
 }

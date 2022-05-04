@@ -27,7 +27,7 @@ public class DistrictPlan {
 	@Id
 	@Column(name = "PlanName")
 	private String planName;
-	@ManyToOne(targetEntity = State.class,fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = State.class)
 	@JoinColumn(name = "StateID")
 	private State state;
 	@Column(name = "Status")
@@ -43,8 +43,7 @@ public class DistrictPlan {
 
 	@OneToMany(mappedBy = "planName") 
     private List<District> districts;
-
-
+	
 	@Transient
 	private String[] planSummary;
 	@Transient
@@ -62,7 +61,6 @@ public class DistrictPlan {
 	@Transient
 	private double avgPolsbyPopperValue;
 	
-
 	public DistrictPlan() {
 		
 	}

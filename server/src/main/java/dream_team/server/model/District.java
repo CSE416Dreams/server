@@ -25,8 +25,7 @@ public class District {
 	private String districtID;
 	@Column(name = "DistrictNum")
 	private Integer districtNum;
-	@ManyToOne(targetEntity = DistrictPlan.class,fetch = FetchType.LAZY, 
-			cascade = CascadeType.ALL)
+	@ManyToOne(targetEntity = DistrictPlan.class)
 	@JoinColumn(name = "PlanName")
 	private DistrictPlan planName;
 	@Column(name = "Area")
@@ -41,7 +40,8 @@ public class District {
 	private Integer voteRep;
 	@Column(name = "VoteDem")
 	private Integer voteDem;
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	@OneToOne
     @JoinColumn(name = "demographicsID", referencedColumnName = "demographicsID")
 	private Demographics demographics;
 
@@ -51,7 +51,8 @@ public class District {
 	private double polsbyPopperValue;
 	@Transient
 	private double schwartzbergValue;
-	
+	@Transient
+	private boolean isSafeDistrict;
 	@Transient
 	private List<County> counties;
 	@Transient
@@ -178,11 +179,19 @@ public class District {
         return false;
     }
 	 public Boolean isMajorityMinorityDistrict() {
-	        int minorities = demographics.getTotalPopulation()- demographics.getWhitePopulation();
+	        int minorities = population - demographics.getWhitePopulation();
 	        if(minorities > demographics.getWhitePopulation()) {
 	            return true;
 	        }
 	        return false;
 	    }
+	 
+	 public Boolean isSafeDistrict() {
+		 double totalVote = voteRep+voteDem;
+		 double diff = Math.abs(voteRep-voteDem);
+		 double threshold = .10;
+		 return (diff/totalVote)<=threshold;
+		 
+	 }
 	
 }

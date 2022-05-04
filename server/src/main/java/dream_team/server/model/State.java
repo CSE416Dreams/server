@@ -19,8 +19,7 @@ public class State {
 	private String id;
 	@Column (name = "stateName")
 	private String name;
-    @OneToMany(mappedBy = "state", 
-    		   cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "state")
 	private List<DistrictPlan> dps; 
     //need to add stateSeawulf here
 	

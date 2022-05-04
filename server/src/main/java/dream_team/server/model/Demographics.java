@@ -9,27 +9,19 @@ public class Demographics {
 	@Column(name = "demographicsID")
 	@Id
 	private String id;
-	
 	@Column(name = "White")
-	private Integer whitePopulation;
-	
+	private Integer whitePopulation;	
 	@Column(name = "Black")
-	private Integer blackPopulation;
-	
+	private Integer blackPopulation;	
 	@Column(name = "Asian")
-	private Integer asianPopulation;
-	
+	private Integer asianPopulation;	
 	@Column(name = "AmericanIndianandAlaskaNative")
-	private Integer amInd_and_AlaNatPopulation;
-	
+	private Integer amInd_and_AlaNatPopulation;	
 	@Column(name = "NativeHawaiianandOtherPacificIslander")
-	private Integer natHaw_and_OPIPopulation;
-	
+	private Integer natHaw_and_OPIPopulation;	
 	@Column(name = "Hispanic")
 	private Integer hispanicPopulation;
 
-	@Transient
-	private Integer totalPopulation;
 	
 	public String getId() {
 		return id;
@@ -58,11 +50,6 @@ public class Demographics {
 	public Integer getHispanicPopulation() {
 		return hispanicPopulation;
 	}
-	
-	public Integer getTotalPopulation() {
-		//+ amInd_and_AlaNatPopulation + natHaw_and_OPIPopulation are excluded as we do not have the 
-		//population for these groups for florida atm.
-		return whitePopulation + blackPopulation + asianPopulation;
-	}
+
 
 }

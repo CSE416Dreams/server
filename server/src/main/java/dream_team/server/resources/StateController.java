@@ -1,11 +1,7 @@
 package dream_team.server.resources;
 
 
-import dream_team.server.model.District;
-import dream_team.server.model.DistrictPlan;
 import dream_team.server.model.State;
-import dream_team.server.service.StateService;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -27,14 +23,11 @@ import javax.persistence.*;
 @Produces(MediaType.APPLICATION_JSON)
 
 public class StateController /* extends HttpServlet */  { 
-	private static final long serialVersionUID = 1L;
-   
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("state_unit");  
+    EntityManager em = emf.createEntityManager();
 	@GET
 	@Path("/{stateName}")
 	public Response getState(@PathParam("stateName") String stateName) {
-	    EntityManagerFactory emf = Persistence.createEntityManagerFactory("state_unit");  
-	    EntityManager em = emf.createEntityManager();  
-
 	    State selectedState = (State)em.find(State.class, stateName);
 		return Response
 	            .status(200)
