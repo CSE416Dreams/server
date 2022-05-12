@@ -69,64 +69,34 @@ public class District {
 		return districtID;
 	}
 
-	public void setDistrictID(String districtID) {
-		this.districtID = districtID;
-	}
-
 	public Long getArea() {
 		return area;
-	}
-
-	public void setArea(Long area) {
-		this.area = area;
 	}
 
 	public Long getPerimeter() {
 		return perimeter;
 	}
 
-	public void setPerimeter(Long perimeter) {
-		this.perimeter = perimeter;
-	}
 
 	public String getIncumbent() {
 		return incumbent;
-	}
-
-	public void setIncumbent(String incumbent) {
-		this.incumbent = incumbent;
 	}
 
 	public Integer getPopulation() {
 		return population;
 	}
 
-	public void setPopulation(Integer population) {
-		this.population = population;
-	}
-
 	public Integer getVoteRep() {
 		return voteRep;
-	}
-
-	public void setVoteRep(Integer voteRep) {
-		this.voteRep = voteRep;
 	}
 
 	public Integer getVoteDem() {
 		return voteDem;
 	}
 
-	public void setVoteDem(Integer voteDem) {
-		this.voteDem = voteDem;
-	}
 
 	public Demographics getDemographics() {
 		return demographics;
-	}
-
-	public void setDemographics(Demographics demographics) {
-		this.demographics = demographics;
 	}
 
 	public boolean isMMD() {
@@ -149,16 +119,13 @@ public class District {
 		return counties;
 	}
 
-	public void setCounties(List<County> counties) {
-		this.counties = counties;
+	public Boolean getIsSafeDistrict() {
+		isSafeDistrict = isSafeDistrict();
+		return isSafeDistrict;
 	}
 
 	public int[] getVoteSplit() {
 		return voteSplit;
-	}
-
-	public void setVoteSplit(int[] voteSplit) {
-		this.voteSplit = voteSplit;
 	}
 
 	public Double calculatePolsbyPopperValue() {
