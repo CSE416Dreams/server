@@ -60,6 +60,8 @@ public class DistrictPlan {
     private int numOfMajorityMinorityDistricts;
 	@Transient
 	private double avgPolsbyPopperValue;
+	@Transient
+	private int[] repDemSplit;
 	
 	public DistrictPlan() {
 		
@@ -115,6 +117,10 @@ public class DistrictPlan {
 	}
 	public JSONObject getSeatsToVoteCurve() {
 		return seatsToVoteCurve;
+	}
+	public int[] getRepDemSplit() {
+		repDemSplit = calculateRepDemSplit();
+		return repDemSplit;
 	}
 	public void setSeatsToVoteCurve(JSONObject seatsToVoteCurve) {
 		this.seatsToVoteCurve = seatsToVoteCurve;
@@ -184,4 +190,13 @@ public class DistrictPlan {
 	        mean = mean / votes.length;
 	        return Math.abs(mean - median);
 	    }
+	 public int[] calculateRepDemSplit() {
+		 int r = 0;
+		 int d = 0;
+		 for(District district : districts) {
+			 if (district.getDominantParty()=="Republican") r++;
+			 else if (district.getDominantParty()=="Democratic") d++;
+		 }
+		 return new int[] {r,d};
+	 }
 }

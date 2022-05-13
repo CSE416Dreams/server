@@ -57,7 +57,11 @@ public class District {
 	private List<County> counties;
 	@Transient
 	private int[] voteSplit;
+	@Transient
+	private String dominantParty;
 	
+	
+
 	public District() {
 	}
 	
@@ -126,6 +130,10 @@ public class District {
 
 	public int[] getVoteSplit() {
 		return voteSplit;
+	}
+	public String getDominantParty() {
+		dominantParty = voteRep>=voteDem?"Republican":"Democratic";
+		return dominantParty;
 	}
 
 	public Double calculatePolsbyPopperValue() {
